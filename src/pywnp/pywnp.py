@@ -1,3 +1,4 @@
+from __future__ import annotations
 from typing import (Dict, List, Set, Callable, Any)
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
@@ -540,7 +541,7 @@ if is_windows:
     def on_message_hook(message: str) -> None:
       if not WNPRedux.media_info._id.startswith(WNPReduxNative.id_prefix): return
       try:
-        media_info = WNPReduxNative.get_media_info(WNPRedux.media_info._id.replace(WNPReduxNative.id_prefix))
+        media_info = WNPReduxNative.get_media_info(WNPRedux.media_info._id.replace(WNPReduxNative.id_prefix, ''))
         if not media_info._id.replace(WNPReduxNative.id_prefix, '') in WNPReduxNative.win_sessions: return
         winSession: WinSession = WNPReduxNative.win_sessions[media_info._id.replace(WNPReduxNative.id_prefix, '')]
 
